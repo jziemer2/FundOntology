@@ -1,0 +1,115 @@
+# baseURI: http://www.fundontology.com/fr/SEC-IAA-Rule
+# imports: http://www.fundontology.com/fr/AnnotationProperty
+# imports: http://www.fundontology.com/fr/LegalReference
+# prefix: fo-fr-sec-iaa-rule
+
+@prefix : <http://www.fundontology.com/fr/SEC-IAA-Rule#> .
+@prefix fo-fr-sec-iaa-rule: <http://www.fundontology.com/fr/SEC-IAA-Rule#> .
+@prefix lkif-extended: <http://www.estrellaproject.org/lkif-core/lkif-extended#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sm: <http://www.omg.org/techprocess/ab/SpecificationMetadata/> .
+@prefix spinmap: <http://spinrdf.org/spinmap#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://fundontology.com/fr/CFR-2012-title17-vol3-part275#P>
+  spinmap:rule [
+      rdf:type spinmap:Mapping-1-1 ;
+      spinmap:context <http://www.fundontology.com/fr/CFRpart275spinSEC-IAA-Rule#P-CFR_Parapraph> ;
+      spinmap:expression <http://spinrdf.org/spin#_arg1> ;
+      spinmap:sourcePredicate1 <http://www.topbraid.org/2007/05/composite.owl#index> ;
+      spinmap:targetPredicate1 fo-fr-sec-iaa-rule:hasCompositeIndex ;
+    ] ;
+.
+<http://www.fundontology.com/fr/SEC-IAA-Rule>
+  rdf:type owl:Ontology ;
+  rdfs:comment "A Sub domain ontology with Legal Knowledge Interchange Format (LKIF) extensions specific for the US Investor Adviser Act."^^xsd:string ;
+  owl:imports <http://www.fundontology.com/fr/AnnotationProperty> ;
+  owl:imports <http://www.fundontology.com/fr/LegalReference> ;
+  owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+.
+fo-fr-sec-iaa-rule:CFR_Parapraph
+  rdf:type owl:Class ;
+  rdfs:label "source Instance"^^xsd:string ;
+  rdfs:subClassOf fo-fr-sec-iaa-rule:CodeFederalRegulations ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onProperty <http://www.estrellaproject.org/lkif-core/mereology.owl#contained_in> ;
+      owl:someValuesFrom fo-fr-sec-iaa-rule:CFR_Section ;
+    ] ;
+.
+fo-fr-sec-iaa-rule:CFR_Section
+  rdf:type owl:Class ;
+  rdfs:label "CFR Section"^^xsd:string ;
+  rdfs:subClassOf fo-fr-sec-iaa-rule:CodeFederalRegulations ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom fo-fr-sec-iaa-rule:CFR_Parapraph ;
+      owl:onProperty <http://www.estrellaproject.org/lkif-core/mereology.owl#contains> ;
+    ] ;
+.
+fo-fr-sec-iaa-rule:CodeFederalRegulations
+  rdf:type owl:Class ;
+  sm:author "Jurgen Ziemer"^^xsd:string ;
+  sm:copyright "Jayzed Data Models Inc."^^xsd:string ;
+  rdfs:comment "A subclass of LKIF Regulation."^^xsd:string ;
+  rdfs:isDefinedBy <https://www.gpo.gov/fdsys/browse/collectionCfr.action?collectionCode=CFR> ;
+  rdfs:label "US Code of Federal Regulations"^^xsd:string ;
+  rdfs:subClassOf <http://www.estrellaproject.org/lkif-core/norm.owl#Regulation> ;
+  skos:definition "The Code of Federal Regulations (CFR) annual edition is the codification of the general and permanent rules published in the Federal Register by the departments and agencies of the Federal Government"^^xsd:string ;
+.
+fo-fr-sec-iaa-rule:SecuritiesExchangeCommissionRule
+  rdf:type owl:Class ;
+  rdfs:label "Securities Exchange Commission Rule"^^xsd:string ;
+  rdfs:subClassOf <http://www.fundontology.com/fr/LegalReference#Legal_Rule> ;
+.
+fo-fr-sec-iaa-rule:hasCompositeIndex
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain fo-fr-sec-iaa-rule:CodeFederalRegulations ;
+  rdfs:label "Paragraph Enum Text"^^xsd:string ;
+  rdfs:range xsd:integer ;
+.
+fo-fr-sec-iaa-rule:hasParagraphEnumText
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain fo-fr-sec-iaa-rule:CFR_Parapraph ;
+  rdfs:label "Paragraph Enum Text"^^xsd:string ;
+  rdfs:range xsd:string ;
+.
+fo-fr-sec-iaa-rule:hasParagraphText
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain fo-fr-sec-iaa-rule:CFR_Parapraph ;
+  rdfs:label "source Instance"^^xsd:string ;
+  rdfs:range xsd:string ;
+.
+fo-fr-sec-iaa-rule:hasRuleText
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain fo-fr-sec-iaa-rule:SecuritiesExchangeCommissionRule ;
+  rdfs:label "TD Prime Service"^^xsd:string ;
+  rdfs:range xsd:string ;
+.
+fo-fr-sec-iaa-rule:hasSectionCitation
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain fo-fr-sec-iaa-rule:CFR_Section ;
+  rdfs:label "Section Citation"^^xsd:string ;
+  rdfs:range xsd:string ;
+.
+fo-fr-sec-iaa-rule:hasSectionNumber
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain fo-fr-sec-iaa-rule:CFR_Section ;
+  rdfs:label "Section Number"^^xsd:string ;
+  rdfs:range xsd:string ;
+.
+fo-fr-sec-iaa-rule:hasSectionSubject
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain fo-fr-sec-iaa-rule:CFR_Section ;
+  rdfs:label "Section Subject"^^xsd:string ;
+  rdfs:range xsd:string ;
+.
+fo-fr-sec-iaa-rule:hasSectionText
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain fo-fr-sec-iaa-rule:CFR_Section ;
+  rdfs:label "Section Text"^^xsd:string ;
+  rdfs:range xsd:string ;
+.

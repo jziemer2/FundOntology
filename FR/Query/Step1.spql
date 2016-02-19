@@ -1,0 +1,9 @@
+# STEP 002: set sourceInstance
+CONSTRUCT {
+    ?targetInstance sp:sourceInstance ?this .
+}
+WHERE {
+    BIND (afn:localname(?this) AS ?local) .
+    ?ns spif:prefix "fo-fr-sec-iaa-rule" .
+    BIND (IRI(CONCAT(?ns, ?local)) AS ?targetInstance) .
+}

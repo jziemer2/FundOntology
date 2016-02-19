@@ -1,0 +1,638 @@
+# baseURI: http://www.fundontology.com/fr/CFRpart275spinSEC-IAA-Rule
+# imports: http://fundontology.com/fr/CFR-2012-title17-vol3-part275
+# imports: http://topbraid.org/spin/spinmapl
+# imports: http://www.fundontology.com/fr/SEC-IAA-Rule
+# prefix: fo-fr-cfr-spin-sec
+
+@prefix afn: <http://jena.hpl.hp.com/ARQ/function#> .
+@prefix fo-fr-cfr-spin-sec: <http://www.fundontology.com/fr/CFRpart275spinSEC-IAA-Rule#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix spin: <http://spinrdf.org/spin#> .
+@prefix spinmap: <http://spinrdf.org/spinmap#> .
+@prefix spinmapl: <http://topbraid.org/spin/spinmapl#> .
+@prefix spl: <http://spinrdf.org/spl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://fundontology.com/fr/CFR-2012-title17-vol3-part275#P>
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "enum_text"^^xsd:string ;
+              ] ;
+            sp:predicate <http://www.fundontology.com/fr/SEC-IAA-Rule#hasParagraphEnumText> ;
+            sp:subject [
+                sp:varName "targetInstance"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "enum"^^xsd:string ;
+              ] ;
+            sp:predicate <http://www.topbraid.org/2007/05/composite.owl#child> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://fundontology.com/fr/CFR-2012-title17-vol3-part275#E> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "enum"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "enum_node"^^xsd:string ;
+              ] ;
+            sp:predicate <http://www.topbraid.org/2007/05/composite.owl#child> ;
+            sp:subject [
+                sp:varName "enum"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object <http://topbraid.org/sxml#TextNode> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "enum_node"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "enum_text"^^xsd:string ;
+              ] ;
+            sp:predicate <http://topbraid.org/sxml#text> ;
+            sp:subject [
+                sp:varName "enum_node"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fo-fr-cfr-spin-sec:convertCFRtoTargetInstance ;
+                <http://spinrdf.org/arg#CFR_Instance> spin:_this ;
+              ] ;
+            sp:variable [
+                sp:varName "targetInstance"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "STEP 004: set Enum Paragraph Text"^^xsd:string ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "text"^^xsd:string ;
+              ] ;
+            sp:predicate <http://www.fundontology.com/fr/SEC-IAA-Rule#hasParagraphText> ;
+            sp:subject [
+                sp:varName "targetInstance"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "text_node"^^xsd:string ;
+              ] ;
+            sp:predicate <http://www.topbraid.org/2007/05/composite.owl#child> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://topbraid.org/sxml#TextNode> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "text_node"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "text"^^xsd:string ;
+              ] ;
+            sp:predicate <http://topbraid.org/sxml#text> ;
+            sp:subject [
+                sp:varName "text_node"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fo-fr-cfr-spin-sec:convertCFRtoTargetInstance ;
+                <http://spinrdf.org/arg#CFR_Instance> spin:_this ;
+              ] ;
+            sp:variable [
+                sp:varName "targetInstance"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "STEP 003: set Paragraph Text"^^xsd:string ;
+    ] ;
+  spin:rule [
+      rdf:type fo-fr-cfr-spin-sec:PreInstantiation ;
+    ] ;
+  spin:rule [
+      rdf:type fo-fr-cfr-spin-sec:SetSourceInstance ;
+    ] ;
+  spinmap:rule [
+      rdf:type spinmap:Mapping-0-1 ;
+      spinmap:context fo-fr-cfr-spin-sec:P-CFR_Parapraph ;
+      spinmap:expression <http://www.fundontology.com/fr/SEC-IAA-Rule#CFR_Parapraph> ;
+      spinmap:targetPredicate1 rdf:type ;
+    ] ;
+.
+<http://fundontology.com/fr/CFR-2012-title17-vol3-part275#SECTION>
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "cita_text"^^xsd:string ;
+              ] ;
+            sp:predicate <http://www.fundontology.com/fr/SEC-IAA-Rule#hasSectionCitation> ;
+            sp:subject [
+                sp:varName "targetInstance"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "cita"^^xsd:string ;
+              ] ;
+            sp:predicate <http://www.topbraid.org/2007/05/composite.owl#child> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://fundontology.com/fr/CFR-2012-title17-vol3-part275#CITA> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "cita"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fo-fr-cfr-spin-sec:getCFR_TextNodeText ;
+                <http://spinrdf.org/arg#parent> [
+                    sp:varName "cita"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "cita_text"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fo-fr-cfr-spin-sec:convertCFRtoTargetInstance ;
+                <http://spinrdf.org/arg#CFR_Instance> spin:_this ;
+              ] ;
+            sp:variable [
+                sp:varName "targetInstance"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "05: set Section Citation"^^xsd:string ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "sectno_text"^^xsd:string ;
+              ] ;
+            sp:predicate <http://www.fundontology.com/fr/SEC-IAA-Rule#hasSectionNumber> ;
+            sp:subject [
+                sp:varName "targetInstance"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "sectno"^^xsd:string ;
+              ] ;
+            sp:predicate <http://www.topbraid.org/2007/05/composite.owl#child> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://fundontology.com/fr/CFR-2012-title17-vol3-part275#SECTNO> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "sectno"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fo-fr-cfr-spin-sec:getCFR_TextNodeText ;
+                <http://spinrdf.org/arg#parent> [
+                    sp:varName "sectno"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "sectno_text"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fo-fr-cfr-spin-sec:convertCFRtoTargetInstance ;
+                <http://spinrdf.org/arg#CFR_Instance> spin:_this ;
+              ] ;
+            sp:variable [
+                sp:varName "targetInstance"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "03: set Section Number Text"^^xsd:string ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "subject_text"^^xsd:string ;
+              ] ;
+            sp:predicate <http://www.fundontology.com/fr/SEC-IAA-Rule#hasSectionSubject> ;
+            sp:subject [
+                sp:varName "targetInstance"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "subject"^^xsd:string ;
+              ] ;
+            sp:predicate <http://www.topbraid.org/2007/05/composite.owl#child> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://fundontology.com/fr/CFR-2012-title17-vol3-part275#SUBJECT> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "subject"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fo-fr-cfr-spin-sec:getCFR_TextNodeText ;
+                <http://spinrdf.org/arg#parent> [
+                    sp:varName "subject"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "subject_text"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fo-fr-cfr-spin-sec:convertCFRtoTargetInstance ;
+                <http://spinrdf.org/arg#CFR_Instance> spin:_this ;
+              ] ;
+            sp:variable [
+                sp:varName "targetInstance"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "04: set Section Subject"^^xsd:string ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "target_para"^^xsd:string ;
+              ] ;
+            sp:predicate <http://www.estrellaproject.org/lkif-core/mereology.owl#contains> ;
+            sp:subject [
+                sp:varName "target_sect"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "para"^^xsd:string ;
+              ] ;
+            sp:predicate <http://www.topbraid.org/2007/05/composite.owl#child> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://fundontology.com/fr/CFR-2012-title17-vol3-part275#P> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "para"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fo-fr-cfr-spin-sec:convertCFRtoTargetInstance ;
+                <http://spinrdf.org/arg#CFR_Instance> spin:_this ;
+              ] ;
+            sp:variable [
+                sp:varName "target_sect"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fo-fr-cfr-spin-sec:convertCFRtoTargetInstance ;
+                <http://spinrdf.org/arg#CFR_Instance> [
+                    sp:varName "para"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "target_para"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "06: set Section Paragraph"^^xsd:string ;
+    ] ;
+  spin:rule [
+      rdf:type fo-fr-cfr-spin-sec:PreInstantiation ;
+    ] ;
+  spin:rule [
+      rdf:type fo-fr-cfr-spin-sec:SetSourceInstance ;
+    ] ;
+  spinmap:rule [
+      rdf:type spinmap:Mapping-0-1 ;
+      spinmap:context fo-fr-cfr-spin-sec:SECTION-CFR_Section ;
+      spinmap:expression <http://www.fundontology.com/fr/SEC-IAA-Rule#CFR_Section> ;
+      spinmap:targetPredicate1 rdf:type ;
+    ] ;
+  spinmap:rule [
+      rdf:type spinmap:Mapping-1-1 ;
+      spinmap:context fo-fr-cfr-spin-sec:SECTION-CFR_Section ;
+      spinmap:expression spin:_arg1 ;
+      spinmap:sourcePredicate1 <http://www.topbraid.org/2007/05/composite.owl#index> ;
+      spinmap:targetPredicate1 <http://www.fundontology.com/fr/SEC-IAA-Rule#hasCompositeIndex> ;
+    ] ;
+.
+sp:sourceInstance
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "source Instance"^^xsd:string ;
+.
+<http://www.fundontology.com/fr/CFRpart275spinSEC-IAA-Rule>
+  rdf:type owl:Ontology ;
+  owl:imports <http://fundontology.com/fr/CFR-2012-title17-vol3-part275> ;
+  owl:imports <http://topbraid.org/spin/spinmapl> ;
+  owl:imports <http://www.fundontology.com/fr/SEC-IAA-Rule> ;
+  owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+.
+fo-fr-cfr-spin-sec:P-CFR_Parapraph
+  rdf:type spinmap:Context ;
+  spinmap:sourceClass <http://fundontology.com/fr/CFR-2012-title17-vol3-part275#P> ;
+  spinmap:target [
+      rdf:type spinmapl:changeNamespace ;
+      spinmap:source spinmap:_source ;
+      spinmapl:targetNamespace "http://www.fundontology.com/fr/SEC-IAA-Rule#"^^xsd:string ;
+    ] ;
+  spinmap:targetClass <http://www.fundontology.com/fr/SEC-IAA-Rule#CFR_Parapraph> ;
+.
+fo-fr-cfr-spin-sec:PreInstantiation
+  rdf:type spin:ConstructTemplate ;
+  spin:body [
+      rdf:type sp:Construct ;
+      sp:templates () ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "o"^^xsd:string ;
+              ] ;
+            sp:predicate [
+                sp:varName "p"^^xsd:string ;
+              ] ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      rdfs:comment "STEP 001 Prefetch"^^xsd:string ;
+    ] ;
+  spin:labelTemplate "01 Empty contruct to prep Class for Spin Rules"^^xsd:string ;
+  rdfs:label "Pre Instantiation"^^xsd:string ;
+  rdfs:subClassOf spin:ConstructTemplates ;
+.
+fo-fr-cfr-spin-sec:SECTION-CFR_Section
+  rdf:type spinmap:Context ;
+  spinmap:sourceClass <http://fundontology.com/fr/CFR-2012-title17-vol3-part275#SECTION> ;
+  spinmap:target [
+      rdf:type spinmapl:changeNamespace ;
+      spinmap:source spinmap:_source ;
+      spinmapl:targetNamespace "http://www.fundontology.com/fr/SEC-IAA-Rule#"^^xsd:string ;
+    ] ;
+  spinmap:targetClass <http://www.fundontology.com/fr/SEC-IAA-Rule#CFR_Section> ;
+.
+fo-fr-cfr-spin-sec:SetSourceInstance
+  rdf:type spin:ConstructTemplate ;
+  spin:body [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object spin:_this ;
+            sp:predicate sp:sourceInstance ;
+            sp:subject [
+                sp:varName "targetInstance"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type afn:localname ;
+                sp:arg1 spin:_this ;
+              ] ;
+            sp:variable [
+                sp:varName "local"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object "fo-fr-sec-iaa-rule" ;
+            sp:predicate <http://spinrdf.org/spif#prefix> ;
+            sp:subject [
+                sp:varName "ns"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:iri ;
+                sp:arg1 [
+                    rdf:type sp:concat ;
+                    sp:arg1 [
+                        sp:varName "ns"^^xsd:string ;
+                      ] ;
+                    sp:arg2 [
+                        sp:varName "local"^^xsd:string ;
+                      ] ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "targetInstance"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "STEP 002: set sourceInstance"^^xsd:string ;
+    ] ;
+  spin:labelTemplate "02 set sourceInstance of the Target Class to ?this"^^xsd:string ;
+  rdfs:label "Set Source Instance"^^xsd:string ;
+  rdfs:subClassOf spin:ConstructTemplates ;
+.
+fo-fr-cfr-spin-sec:TextNode-SecuritiesExchangeCommissionRule
+  rdf:type spinmap:Context ;
+  spinmap:sourceClass <http://topbraid.org/sxml#TextNode> ;
+  spinmap:targetClass <http://www.fundontology.com/fr/SEC-IAA-Rule#SecuritiesExchangeCommissionRule> ;
+.
+fo-fr-cfr-spin-sec:convertCFRtoTargetInstance
+  rdf:type spin:Function ;
+  spin:body [
+      rdf:type sp:Select ;
+      sp:resultVariables (
+          [
+            sp:varName "targetInstance"^^xsd:string ;
+          ]
+        ) ;
+      sp:where (
+          [
+            rdf:type sp:SubQuery ;
+            sp:query [
+                rdf:type sp:Select ;
+                sp:resultVariables (
+                    [
+                      sp:varName "CFR_Instance"^^xsd:string ;
+                    ]
+                    [
+                      sp:varName "targetInstance"^^xsd:string ;
+                    ]
+                  ) ;
+                sp:where (
+                    [
+                      rdf:type sp:Bind ;
+                      sp:expression [
+                          rdf:type afn:localname ;
+                          sp:arg1 [
+                              sp:varName "CFR_Instance"^^xsd:string ;
+                            ] ;
+                        ] ;
+                      sp:variable [
+                          sp:varName "local"^^xsd:string ;
+                        ] ;
+                    ]
+                    [
+                      sp:object "fo-fr-sec-iaa-rule" ;
+                      sp:predicate <http://spinrdf.org/spif#prefix> ;
+                      sp:subject [
+                          sp:varName "ns"^^xsd:string ;
+                        ] ;
+                    ]
+                    [
+                      rdf:type sp:Bind ;
+                      sp:expression [
+                          rdf:type sp:iri ;
+                          sp:arg1 [
+                              rdf:type sp:concat ;
+                              sp:arg1 [
+                                  sp:varName "ns"^^xsd:string ;
+                                ] ;
+                              sp:arg2 [
+                                  sp:varName "local"^^xsd:string ;
+                                ] ;
+                            ] ;
+                        ] ;
+                      sp:variable [
+                          sp:varName "targetInstance"^^xsd:string ;
+                        ] ;
+                    ]
+                  ) ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate <http://spinrdf.org/arg#CFR_Instance> ;
+      spl:valueType rdfs:Resource ;
+    ] ;
+  spin:returnType rdfs:Resource ;
+  rdfs:comment "Convert the CFR source instance to the same instance with target namespace"^^xsd:string ;
+  rdfs:subClassOf spin:Functions ;
+.
+fo-fr-cfr-spin-sec:getCFR_TextNodeText
+  rdf:type spin:Function ;
+  spin:body [
+      rdf:type sp:Select ;
+      sp:resultVariables (
+          [
+            sp:varName "text_node_text"^^xsd:string ;
+          ]
+        ) ;
+      sp:where (
+          [
+            rdf:type sp:SubQuery ;
+            sp:query [
+                rdf:type sp:Select ;
+                sp:resultVariables (
+                    [
+                      sp:varName "parent"^^xsd:string ;
+                    ]
+                    [
+                      sp:varName "text_node_text"^^xsd:string ;
+                    ]
+                  ) ;
+                sp:where (
+                    [
+                      sp:object [
+                          sp:varName "text_node"^^xsd:string ;
+                        ] ;
+                      sp:predicate <http://www.topbraid.org/2007/05/composite.owl#child> ;
+                      sp:subject [
+                          sp:varName "parent"^^xsd:string ;
+                        ] ;
+                    ]
+                    [
+                      sp:object <http://topbraid.org/sxml#TextNode> ;
+                      sp:predicate rdf:type ;
+                      sp:subject [
+                          sp:varName "text_node"^^xsd:string ;
+                        ] ;
+                    ]
+                    [
+                      sp:object [
+                          sp:varName "text_node_text"^^xsd:string ;
+                        ] ;
+                      sp:predicate <http://topbraid.org/sxml#text> ;
+                      sp:subject [
+                          sp:varName "text_node"^^xsd:string ;
+                        ] ;
+                    ]
+                  ) ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate <http://spinrdf.org/arg#parent> ;
+      spl:valueType rdfs:Resource ;
+    ] ;
+  spin:returnType xsd:string ;
+  rdfs:comment "Returns the sxtm:text for the given Parent"^^xsd:string ;
+  rdfs:subClassOf spin:Functions ;
+.
+<http://www.fundontology.com/fr/SEC-IAA-Rule#CodeFederalRegulations>
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onProperty sp:sourceInstance ;
+      owl:someValuesFrom <http://fundontology.com/fr/CFR-2012-title17-vol3-part275#CFRpart275> ;
+    ] ;
+.

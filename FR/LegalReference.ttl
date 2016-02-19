@@ -1,0 +1,264 @@
+# baseURI: http://www.fundontology.com/fr/LegalReference
+# imports: http://www.estrellaproject.org/lkif-core/lkif-extended
+# imports: http://www.fundontology.com/fr/AnnotationProperty
+# prefix: fo-fr-legal-ref
+
+@prefix AnnotationProperty: <http://www.fundontology.com/fr/AnnotationProperty#> .
+@prefix fo-fr-legal-ref: <http://www.fundontology.com/fr/LegalReference#> .
+@prefix lkif-extended: <http://www.estrellaproject.org/lkif-core/lkif-extended#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sm: <http://www.omg.org/techprocess/ab/SpecificationMetadata/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.estrellaproject.org/lkif-core/expression.owl#Evaluative_Proposition>
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:onProperty fo-fr-legal-ref:evaluated_by ;
+      owl:someValuesFrom <http://www.estrellaproject.org/lkif-core/expression.owl#Evaluative_Attitude> ;
+    ] ;
+.
+<http://www.estrellaproject.org/lkif-core/expression.owl#Qualification>
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:onProperty fo-fr-legal-ref:commanded_by ;
+      owl:someValuesFrom <http://www.estrellaproject.org/lkif-core/norm.owl#Qualificatory_Expression> ;
+    ] ;
+.
+<http://www.estrellaproject.org/lkif-core/expression.owl#applied_by_concept>
+  owl:inverseOf fo-fr-legal-ref:applies_legal ;
+.
+<http://www.estrellaproject.org/lkif-core/expression.owl#evaluates>
+  rdfs:subPropertyOf fo-fr-legal-ref:considers ;
+.
+<http://www.estrellaproject.org/lkif-core/norm.owl#Allowed>
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:onProperty fo-fr-legal-ref:allowed_by ;
+      owl:someValuesFrom <http://www.estrellaproject.org/lkif-core/norm.owl#Permission> ;
+    ] ;
+.
+<http://www.estrellaproject.org/lkif-core/norm.owl#Disallowed>
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:onProperty fo-fr-legal-ref:disallowed_by ;
+      owl:someValuesFrom <http://www.estrellaproject.org/lkif-core/norm.owl#Prohibition> ;
+    ] ;
+.
+<http://www.estrellaproject.org/lkif-core/norm.owl#Obliged>
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:onProperty fo-fr-legal-ref:allowed_by ;
+      owl:someValuesFrom <http://www.estrellaproject.org/lkif-core/norm.owl#Obligation> ;
+    ] ;
+.
+<http://www.estrellaproject.org/lkif-core/norm.owl#Permission>
+  owl:equivalentClass [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          [
+            rdf:type owl:Restriction ;
+            owl:onProperty fo-fr-legal-ref:allows ;
+            owl:someValuesFrom <http://www.estrellaproject.org/lkif-core/norm.owl#Allowed> ;
+          ]
+          [
+            rdf:type owl:Restriction ;
+            owl:allValuesFrom <http://www.estrellaproject.org/lkif-core/norm.owl#Allowed> ;
+            owl:onProperty fo-fr-legal-ref:allows ;
+          ]
+        ) ;
+    ] ;
+.
+<http://www.estrellaproject.org/lkif-core/norm.owl#Prohibition>
+  owl:equivalentClass [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          [
+            rdf:type owl:Restriction ;
+            owl:onProperty fo-fr-legal-ref:allows ;
+            owl:someValuesFrom <http://www.estrellaproject.org/lkif-core/norm.owl#Obliged> ;
+          ]
+          [
+            rdf:type owl:Restriction ;
+            owl:onProperty fo-fr-legal-ref:disallows ;
+            owl:someValuesFrom <http://www.estrellaproject.org/lkif-core/norm.owl#Disallowed> ;
+          ]
+          [
+            rdf:type owl:Restriction ;
+            owl:allValuesFrom <http://www.estrellaproject.org/lkif-core/norm.owl#Obliged> ;
+            owl:onProperty fo-fr-legal-ref:allows ;
+          ]
+          [
+            rdf:type owl:Restriction ;
+            owl:allValuesFrom <http://www.estrellaproject.org/lkif-core/norm.owl#Disallowed> ;
+            owl:onProperty fo-fr-legal-ref:disallows ;
+          ]
+        ) ;
+    ] ;
+.
+<http://www.estrellaproject.org/lkif-core/norm.owl#commands>
+  owl:inverseOf fo-fr-legal-ref:commanded_by ;
+.
+<http://www.estrellaproject.org/lkif-core/norm.owl#disallows>
+  owl:inverseOf fo-fr-legal-ref:disallowed_by ;
+.
+<http://www.fundontology.com/fr/FundRegulation#Judicially_Qualified>
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:onProperty <http://www.estrellaproject.org/lkif-core/expression.owl#qualified_by> ;
+      owl:someValuesFrom fo-fr-legal-ref:Qualifying_Legal_Expression ;
+    ] ;
+.
+<http://www.fundontology.com/fr/LegalReference>
+  rdf:type owl:Ontology ;
+  rdfs:comment "Legal Reference ontology contains extensions to the Legal Knowledge Interchange Format (LKIF)."^^xsd:string ;
+  owl:imports <http://www.estrellaproject.org/lkif-core/lkif-extended> ;
+  owl:imports <http://www.fundontology.com/fr/AnnotationProperty> ;
+  owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+.
+fo-fr-legal-ref:Adjudication
+  rdf:type owl:Class ;
+  rdfs:label "Adjudication"^^xsd:string ;
+  rdfs:subClassOf fo-fr-legal-ref:Judgement ;
+.
+fo-fr-legal-ref:Contractual_Agreement
+  rdf:type owl:Class ;
+  rdfs:label "Contactual Agreement"^^xsd:string ;
+  rdfs:subClassOf <http://www.estrellaproject.org/lkif-core/expression.owl#Expression> ;
+  rdfs:subClassOf <http://www.estrellaproject.org/lkif-core/norm.owl#Norm> ;
+.
+fo-fr-legal-ref:Judgement
+  rdf:type owl:Class ;
+  rdfs:label "Judgement"^^xsd:string ;
+  rdfs:subClassOf <http://www.estrellaproject.org/lkif-core/expression.owl#Expression> ;
+  rdfs:subClassOf <http://www.estrellaproject.org/lkif-core/expression.owl#Qualification> ;
+.
+fo-fr-legal-ref:JudicialInterpretation
+  rdf:type owl:Class ;
+  rdfs:label "Judicial Interpretation"^^xsd:string ;
+  rdfs:subClassOf fo-fr-legal-ref:Judgement ;
+.
+fo-fr-legal-ref:Judicial_Claim
+  rdf:type owl:Class ;
+  rdfs:label "Judicial Claim"^^xsd:string ;
+  rdfs:subClassOf fo-fr-legal-ref:Judicially_Qualified ;
+.
+fo-fr-legal-ref:Judicial_Outcome
+  rdf:type owl:Class ;
+  rdfs:label "Judicial Outcome"^^xsd:string ;
+  rdfs:subClassOf <http://www.fundontology.com/fr/FundRegulation#Judicially_Qualified> ;
+.
+fo-fr-legal-ref:Judicially_Qualified
+  rdf:type owl:Class ;
+  rdfs:label "Green Mountain pension fund"^^xsd:string ;
+  rdfs:subClassOf <http://www.estrellaproject.org/lkif-core/expression.owl#Qualified> ;
+.
+fo-fr-legal-ref:Legal_Consequence
+  rdf:type owl:Class ;
+  rdfs:label "Legal Consequence"^^xsd:string ;
+  rdfs:subClassOf <http://www.estrellaproject.org/lkif-core/norm.owl#Normatively_Qualified> ;
+  skos:definition "Legal_Consequence represents the sanction provided by the law in the presence of some Legal_Status or Material_Circumstance. It covers all cases when the Legal_Rule considers some Normatively_Qualified expression, but does not simply allows, disallows or evaluates it."^^xsd:string ;
+.
+fo-fr-legal-ref:Legal_Rule
+  rdf:type owl:Class ;
+  rdfs:label "Legal Rule"^^xsd:string ;
+  rdfs:subClassOf <http://www.estrellaproject.org/lkif-core/norm.owl#Norm> ;
+  rdfs:subClassOf <http://www.fundontology.com/fr/FundRegulation#Qualifying_Legal_Expression> ;
+.
+fo-fr-legal-ref:Legal_Status
+  rdf:type owl:Class ;
+  rdfs:label "Legal Status"^^xsd:string ;
+  rdfs:subClassOf <http://www.estrellaproject.org/lkif-core/norm.owl#Normatively_Qualified> ;
+.
+fo-fr-legal-ref:Material_Circumstance
+  rdf:type owl:Class ;
+  rdfs:label "Material Circumstance"^^xsd:string ;
+  rdfs:subClassOf <http://www.estrellaproject.org/lkif-core/norm.owl#Normatively_Qualified> ;
+  rdfs:subClassOf <http://www.fundontology.com/fr/FundRegulation#Judicially_Qualified> ;
+.
+fo-fr-legal-ref:Qualifying_Legal_Expression
+  rdf:type owl:Class ;
+  rdfs:label "Green Mountain pension fund"^^xsd:string ;
+  rdfs:subClassOf <http://www.estrellaproject.org/lkif-core/expression.owl#Qualification> ;
+  rdfs:subClassOf <http://www.estrellaproject.org/lkif-core/norm.owl#Legal_Expression> ;
+  owl:equivalentClass [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          <http://www.estrellaproject.org/lkif-core/expression.owl#Qualification>
+          <http://www.estrellaproject.org/lkif-core/norm.owl#Legal_Expression>
+        ) ;
+    ] ;
+.
+fo-fr-legal-ref:allowed_by
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "Relates a qualified Allowed to the norm allowing it"^^xsd:string ;
+  rdfs:domain <http://www.estrellaproject.org/lkif-core/norm.owl#Allowed> ;
+  rdfs:subPropertyOf fo-fr-legal-ref:considered_by ;
+  owl:inverseOf <http://www.estrellaproject.org/lkif-core/norm.owl#allows> ;
+.
+fo-fr-legal-ref:allows
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "Relates a norm to the thing it allows"^^xsd:string ;
+  rdfs:range <http://www.estrellaproject.org/lkif-core/norm.owl#Allowed> ;
+  rdfs:subPropertyOf fo-fr-legal-ref:considers ;
+.
+fo-fr-legal-ref:applied_by_concept
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain <http://www.estrellaproject.org/lkif-core/expression.owl#Qualified> ;
+  rdfs:label "applied by concept"^^xsd:string ;
+  rdfs:range <http://www.estrellaproject.org/lkif-core/norm.owl#Qualificatory_Expression> ;
+  rdfs:subPropertyOf <http://www.estrellaproject.org/lkif-core/expression.owl#qualified_by> ;
+.
+fo-fr-legal-ref:applies_legal
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain <http://www.estrellaproject.org/lkif-core/norm.owl#Legal_Expression> ;
+  rdfs:label "applies concept"^^xsd:string ;
+  rdfs:range <http://www.estrellaproject.org/lkif-core/expression.owl#Qualified> ;
+  rdfs:subPropertyOf <http://www.estrellaproject.org/lkif-core/expression.owl#qualifies> ;
+.
+fo-fr-legal-ref:commanded_by
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain <http://www.estrellaproject.org/lkif-core/norm.owl#Obliged> ;
+  rdfs:subPropertyOf fo-fr-legal-ref:allowed_by ;
+.
+fo-fr-legal-ref:commands
+  rdf:type owl:ObjectProperty ;
+  rdfs:range <http://www.estrellaproject.org/lkif-core/norm.owl#Obliged> ;
+  rdfs:subPropertyOf fo-fr-legal-ref:allows ;
+.
+fo-fr-legal-ref:considered_by
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain <http://www.estrellaproject.org/lkif-core/expression.owl#Qualification> ;
+  rdfs:label "considered by"^^xsd:string ;
+  rdfs:range <http://www.estrellaproject.org/lkif-core/norm.owl#Qualificatory_Expression> ;
+  rdfs:subPropertyOf <http://www.estrellaproject.org/lkif-core/expression.owl#qualified_by> ;
+  owl:inverseOf <http://www.fundontology.com/fr/FundRegulation#considers> ;
+.
+fo-fr-legal-ref:considers
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain <http://www.estrellaproject.org/lkif-core/norm.owl#Qualificatory_Expression> ;
+  rdfs:label "considers"^^xsd:string ;
+  rdfs:range <http://www.estrellaproject.org/lkif-core/expression.owl#Qualification> ;
+  rdfs:subPropertyOf <http://www.estrellaproject.org/lkif-core/expression.owl#qualifies> ;
+.
+fo-fr-legal-ref:disallowed_by
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "Relates a qualified Disallowed to the norm disallowing it"^^xsd:string ;
+  rdfs:domain <http://www.estrellaproject.org/lkif-core/norm.owl#Disallowed> ;
+  rdfs:subPropertyOf fo-fr-legal-ref:considered_by ;
+.
+fo-fr-legal-ref:disallows
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "Relates a norm to the thing it disallows"^^xsd:string ;
+  rdfs:range <http://www.estrellaproject.org/lkif-core/norm.owl#Disallowed> ;
+  rdfs:subPropertyOf fo-fr-legal-ref:considers ;
+.
+fo-fr-legal-ref:evaluated_by
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain <http://www.estrellaproject.org/lkif-core/expression.owl#Evaluative_Proposition> ;
+  rdfs:range <http://www.estrellaproject.org/lkif-core/expression.owl#Evaluative_Attitude> ;
+  rdfs:subPropertyOf fo-fr-legal-ref:considered_by ;
+  owl:inverseOf <http://www.estrellaproject.org/lkif-core/expression.owl#evaluates> ;
+.
